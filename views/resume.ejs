@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+  />
+</head>
+
+<style>
+ body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    height: fit-content;
+    
+    display: flex;
+    justify-content: center;
+}
+
+.admit-card {
+    width: 800px; /* Set a fixed width */
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.admit-card-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admit-card-header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+th:first-child, td:first-child {
+    font-weight: bold;
+}
+
+.terms {
+    margin-top: 20px;
+}
+
+.terms p {
+    margin: 5px 0;
+}
+
+.signature {
+    margin-top: 30px;
+    text-align: center;
+}
+.photo-barcode
+{
+    margin-left: 100px;
+}
+.photo {
+    display: inline-block; /* Keep the photo inline */
+    width:200px; /* Set a fixed width */
+    margin-right: 20px; /* Add some margin for spacing */
+}
+
+.barcode {
+    display: inline-block; /* Keep the barcode inline */
+    width: 302px; /* Set a fixed width */
+}
+
+.img1,
+.img2 {
+    max-width: 100%; /* Maintain the image size */
+    max-height: 100%;
+    border-radius: 5px;
+}
+.img1
+{
+    width: 100px;
+    height: 150px;
+}
+
+</style>
+<body>
+    
+    <div class="admit-card">
+        <div class="admit-card-header">
+            <h1>डॉ। एपीजे अब्दुल कलाम तकनीकी विश्वविद्यालय, उत्तर प्रदेश, लखनऊ</h1>
+            <h1>Dr. APJ Abdul Kalam Technical University, Uttar Pradesh, Lucknow</h1>
+        </div>
+       
+        <div class="photo-barcode">
+            <div class="photo">
+           
+                <img class="img1" src="<%= resdata.image %>" alt="Photo" style="max-width: 400px; max-height: 100px; border-radius: 5px;" />
+
+            </div>
+
+           
+            <div class="barcode">
+            
+                <img class="img2" src="https://imgs.search.brave.com/-cyQKmxLyVV93kjJkQ8YhT7xYimLGcWYeYOtFhWTdF0/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMuZnJlZWltYWdl/cy5jb20vaW1hZ2Vz/L2xhcmdlLXByZXZp/ZXdzLzQ3YS9iYXJj/b2RlLTE1MTc2Nzcu/anBnP2ZtdA" alt="Photo" style="maxWidth: 50px; maxHeight: 50px; borderRadius: 5px " />
+        
+            </div>
+        </div>
+        <table>
+            <tr>
+            
+                <th>Roll No / रोल नंबर:</th>
+                <td><%= resdata.rollno%></td>
+            </tr>
+            <tr>
+                <th>Name / नाम:</th>
+                <td><%= resdata.firstName+" "+resdata.lastName %></td>
+            </tr>
+            <tr>
+                <th>Gender / लिंग:</th>
+                <td><%= resdata.gender %></td>
+            </tr>
+            <tr>
+                <th>Branch / शाखा:</th>
+                <td><%= resdata.branchCode%></td>
+            </tr>
+
+            <tr>
+                <th>Institute / संस्थान:</th>
+                <td><%= resdata.institute %></td>
+            </tr>
+
+         
+        
+            <tr>
+                <th>Examination Center / परीक्षा केंद्र:</th>
+                <td><%= resdata.examinationCenter %></td>
+            </tr>
+            <tr>
+                <th>Father's Name / पिता का नाम:</th>
+                <td><%= resdata.fatherName %></td>
+            </tr>
+            <tr>
+                <th>Course / पाठ्यक्रम:</th>
+                <td><%= resdata.branchCode %></td>
+            </tr>
+            <tr>
+                <th>Semester / सेमेस्टर:</th>
+                <td>1th</td>
+            </tr>
+            <tr>
+            <th>Mobile / मोबाइल नंबर:</th>
+            <td><%= resdata.mobile %></td>
+            
+        </tr>
+        <tr>
+            <th>Email / ईमेल:</th>
+            <td><%= resdata.email %></td>
+        
+        </tr>
+        </table>
+        <h2>Subject Details / विषय विवरण:</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject Code / विषय कोड</th>
+                    <th>Subject Name / विषय का नाम</th>
+                    <th>Exam Date / परीक्षा तिथि</th>
+                    <th>Timing / समय</th>
+                    <th>AnsBook No / उत्तर पुस्तिका संख्या</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CSE101</td>
+                    <td><%= resdata.allsubject[0] %></td>
+                    <td>May 15, 2024</td>
+                    <td>9:00 AM - 12:00 PM</td>
+                    <td>AB123</td>
+                </tr>
+                <tr>
+                    <td>CSE102</td>
+                    <td><%= resdata.allsubject[1] %></td>
+                    <td>May 17, 2024</td>
+                    <td>9:00 AM - 12:00 PM</td>
+                    <td>AB124</td>
+                </tr>
+                <tr>
+                    <td>CSE103</td>
+                    <td><%= resdata.allsubject[2] %></td>
+                    <td>May 20, 2024</td>
+                    <td>9:00 AM - 12:00 PM</td>
+                    <td>AB125</td>
+                </tr>
+                <tr>
+                    <td>CSE104</td>
+                    <td><%= resdata.allsubject[3] %></td>
+                    <td>May 22, 2024</td>
+                    <td>9:00 AM - 12:00 PM</td>
+                    <td>AB126</td>
+                </tr>
+                <tr>
+                    <td>CSE105</td>
+                    <td><%= resdata.allsubject[4] %></td>
+                    <td>May 24, 2024</td>
+                    <td>9:00 AM - 12:00 PM</td>
+                    <td>AB127</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="terms">
+            <h3>Terms and Conditions / नियम और शर्तें:</h3>
+            <p>1. Students must bring this admit card and a valid ID proof to the examination center.</p>
+            <p>2. Electronic devices such as mobile phones, smartwatches, etc., are not allowed in the examination hall.</p>
+            <p>3. Students must reach the examination center at least 30 minutes before the exam.</p>
+            <hr/>
+            <h3>शर्तें और नियम:</h3>
+            <p>1. छात्रों को परीक्षा केंद्र में इस एडमिट कार्ड और एक वैध आईडी प्रूफ लाना चाहिए।</p>
+            <p>2. मोबाइल फोन, स्मार्टवॉच आदि जैसे इलेक्ट्रॉनिक उपकरण परीक्षा हॉल में अनुमति नहीं है।</p>
+            <p>3. छात्रों को परीक्षा केंद्र के पहुंचने से कम से कम 30 मिनट पहले करना चाहिए।</p>
+        </div>
+        <div class="signature">
+            <p>Controller of Examinations Signature</p>
+        </div>
+    </div>
+    
+</body>
+</html>
